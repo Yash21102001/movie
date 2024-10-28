@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+
+<body>
+  <%- include('partials/navbar') %>
+
+    <div class="container">
+      <div class="row">
+
+        <% data.map((val,index)=>{
+          let {id,title,img,discription,relisDate,rating} = val;
+          %>
+          <div class="col-md-4">
+            <div class="card my-3" style="width: 22rem; height: fit-content;">
+              <img src="<%= img %>" class="card-img-top img-img-fluid" alt="<%= title%>">
+              <div class="card-body">
+                <h3 class="card-title">
+                  <%= title %>
+                </h3>
+                <span class="h5">
+                  <%= relisDate %>
+                </span>
+                <p class="card-text mt-3">
+                  <%= discription %>
+                </p>
+                <span class="h-4">Ratings :- <%= rating %></span>
+                <div class="mt-4">
+                  <a href="/delete_movie/<%= id %>" class="btn btn-danger ms-3"><i class="fa-regular fa-trash-can"></i></a>
+                  <a href="/edit_movie/<%= id %>" class="btn btn-primary ms-3"><i class="fa-regular fa-pen-to-square"></i></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <% }) %>
+      </div>
+
+    </div>
+
+
+
+    <script src="../bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
